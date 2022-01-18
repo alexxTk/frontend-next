@@ -1,0 +1,290 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/grid";
+
+//Grid
+$grid-columns: 24;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1048px,
+  xxl: 1050px,
+);
+
+// Colors
+$primary: #158cff;
+
+$gray-100: #fbfbfb;
+$gray-200: #f3f3f3;
+$gray-300: #f8f8f8;
+$gray-400: #e2e2e2;
+$gray-500: #ebebeb;
+$gray-600: #e5e5e5;
+$gray-700: #b0b0b0;
+$gray-800: #b7b7b7;
+$gray-900: #7a7a7a;
+$black: #000;
+$white: #fff;
+
+$theme-colors: (
+  "primary": $primary,
+  "dark": $dark,
+);
+
+$body-bg: $gray-100;
+$body-color: $black;
+$card-border-width: 0px;
+$card-border-radius: 8px;
+$card-bg: $white;
+$input-color: $black;
+$input-placeholder-color: $black;
+$table-color: $black;
+// $input-bg: $gray-100;
+// $input-border-width: 0px;
+// $input-border-radius: 8px;
+
+// Fonts
+$font-size-base: 1rem;
+$font-family-base: "Hiragino Kaku Gothic ProN", Roboto, "Noto Sans JP", "Hiragino Sans",
+  "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", 游ゴシック Medium, "Yu Gothic Medium",
+  "Yu Gothic", "YuGothic", メイリオ, 游ゴシック体, "Meiryo", "Osaka", "ＭＳ Ｐゴシック",
+  "MS PGothic", sans-serif;
+
+.fs-12 {
+  font-size: 12px !important;
+}
+
+.fs-14 {
+  font-size: 14px !important;
+}
+
+.fs-16 {
+  font-size: 16px !important;
+}
+
+.fs-20 {
+  font-size: 20px !important;
+}
+
+.fs-24 {
+  font-size: 24px !important;
+}
+
+.fs-40 {
+  font-size: 40px !important;
+}
+
+//Responsive borders (e.x. border-lg-top)
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .border#{$infix}-top {
+      border-top: $border-width solid $border-color !important;
+    }
+    .border#{$infix}-right {
+      border-right: $border-width solid $border-color !important;
+    }
+    .border#{$infix}-bottom {
+      border-bottom: $border-width solid $border-color !important;
+    }
+    .border#{$infix}-left {
+      border-left: $border-width solid $border-color !important;
+    }
+
+    .border#{$infix}-top-0 {
+      border-top: 0 !important;
+    }
+    .border#{$infix}-right-0 {
+      border-right: 0 !important;
+    }
+    .border#{$infix}-bottom-0 {
+      border-bottom: 0 !important;
+    }
+    .border#{$infix}-left-0 {
+      border-left: 0 !important;
+    }
+
+    .border#{$infix}-x {
+      border-left: $border-width solid $border-color !important;
+      border-right: $border-width solid $border-color !important;
+    }
+
+    .border#{$infix}-y {
+      border-top: $border-width solid $border-color !important;
+      border-bottom: $border-width solid $border-color !important;
+    }
+    // support of .border-sm (-md, -lg, -xl)
+    .border#{$infix} {
+      border-top: $border-width solid $border-color !important;
+      border-bottom: $border-width solid $border-color !important;
+      border-left: $border-width solid $border-color !important;
+      border-right: $border-width solid $border-color !important;
+    }
+    .border#{$infix}-0 {
+      border-top: 0 !important;
+      border-bottom: 0 !important;
+      border-left: 0 !important;
+      border-right: 0 !important;
+    }
+  }
+}
+
+// Buttons
+$btn-font-weight: 700;
+$btn-border-radius: 74px;
+
+.btn-primary {
+  color: $white !important;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $gray-900 !important;
+  border: none !important;
+}
+
+//Checkbox
+.custom-checkbox .form-check-input[type=checkbox] {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 5px !important;
+  border: none !important;
+  box-shadow: 0px 0px 0px 3px $gray-800;
+  background: $gray-200 !important;
+  ~ .form-check-label {
+    padding-left: 8px;
+  }
+}
+
+.custom-checkbox .form-check-input:checked[type=checkbox] {
+  background: url("data:image/svg+xml;charset=UTF-8,%3csvg width='15' height='12' viewBox='0 0 14 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M4.75 8.15 1.6 5 .55 6.05l4.2 4.2 9-9L12.7.2 4.75 8.15Z' fill='%23b7b7b7'/%3e%3cdefs%3e%3clinearGradient id='a' x1='1.372' y1='10.25' x2='12.791' y2='1.805' gradientUnits='userSpaceOnUse'%3e%3cstop stop-color='%23FF2875'/%3e%3cstop offset='1' stop-color='%23FFB72F'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e") no-repeat center center, $gray-200 !important;
+}
+
+$navbar-light-color: $white;
+$navbar-light-hover-color: none;
+$navbar-light-active-color: none;
+$navbar-light-toggler-border-color: none;
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 39px;
+}
+
+.title-badge {
+  padding: 7px 20px;
+  margin-left: 23px;
+  background: $gray-400;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.calculator-card {
+  padding: 46px 63px;
+  .input-label {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+  .form-options {
+    border: 1px solid $gray-700;
+    border-radius: 8px;
+    &.bold {
+      font-weight: 700;
+    }
+  }
+  .updater {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+  .updater-name {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  .values-table.table > {
+    :not(caption) > * > * {
+      vertical-align: middle;
+    }
+    :not(caption) > * > th {
+      word-break: keep-all;
+      padding: 18px 18px 18px 39px;
+    }
+    :not(caption) > * > td {
+      padding: 14px 19px 14px 19px;
+      .form-control {
+        background: $gray-100;
+        border: 1px solid $gray-500;
+        border-radius: 4px;
+        height: 32px;
+      }
+    }
+  }
+}
+
+
+//1
+
+.center-ro{
+  margin: 2em 0em;
+  padding: 1em 2em;
+  background: #FFFFFF ;
+.table-pos{
+  padding: 2em;
+  background: #FFFFFF;
+}
+.box-unbordered{
+  border-bottom: 1px solid $gray-700; 
+}
+.brd-don{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $gray-700;
+  padding-bottom: 1.5em;
+  padding-top: 1.5em;
+}
+}
+
+.space-btn-icon{
+  button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 32px;
+    padding-right: 32px;
+  }  
+
+}
+@import "~bootstrap";
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) {
+
+// }
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) {
+
+// }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) {
+
+// }
+// // X-Large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+
+// }
+
+// // XX-Large devices (larger desktops, 1400px and up)
+// @media (min-width: 1400px) {
+
+// }
